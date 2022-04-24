@@ -4,11 +4,12 @@ import { css } from '@emotion/react';
 import logo from './images/1-logo1.png';
 import cart1 from './images/2-shopping-cart.png';
 import flag from './images/3-country-at.svg';
+import heroImage from './images/4-hero-2.png';
+import envelope from './images/6-envelope-red.png';
 
 const lightGray = '#F4F4F4';
 const darkGray = '#575757';
 const darkRed = '#8e0919';
-const white = '#fff';
 
 const appStyles = css`
   font-family: Futura, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
@@ -17,11 +18,46 @@ const appStyles = css`
 
   background-color: white;
   display: flex;
+  flex-direction: column;
+
+  button {
+    color: white;
+    background-color: ${darkRed};
+    border: solid 2px;
+    border-color: ${darkRed};
+    padding: 20px 60px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: all 0.35s ease-in-out;
+  }
+
+  button:hover {
+    background-color: transparent;
+    color: ${darkRed};
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  h3 {
+  }
+
+  h4 {
+  }
+
+  p {
+    font-size: 25px;
+  }
 `;
 
 const headerStyles = css`
   display: flex;
   width: 100%;
+  height: 20vh;
+  min-height: 150px;
+  max-height: 250px;
 
   #whole-div {
     width: 100%;
@@ -42,6 +78,7 @@ const headerStyles = css`
   a {
     text-decoration: none;
     color: black;
+    font-size: 22px;
   }
 
   a:hover {
@@ -53,8 +90,12 @@ const headerStyles = css`
     background-color: transparent;
     color: black;
     padding: 16px;
-    font-size: 16px;
+    font-size: 22px;
+    font-weight: normal;
     border: none;
+    font-family: Futura, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+      Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   }
 
   /* The container <div> - needed to position the dropdown content */
@@ -71,6 +112,10 @@ const headerStyles = css`
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    font-size: 20px;
+    font-family: Futura, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+      Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   }
 
   /* Links inside the dropdown */
@@ -94,17 +139,81 @@ const headerStyles = css`
 
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {
-    color: darkRed;
+    color: ${darkRed};
   }
 
   #language-button {
     display: inline-block;
     cursor: pointer;
     border: none;
+    color: black;
+    background-color: ${lightGray};
+    font-weight: normal;
   }
 
   img {
     cursor: pointer;
+  }
+
+  #newsletter-button {
+    background-color: ${darkRed};
+    position: fixed;
+    top: 200px;
+    right: -60px;
+    transform: rotate(270deg);
+    border-radius: 10px 10px 0 0;
+    font-size: 22px;
+    padding: 10px 0 10px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    img {
+      transform: rotate(90deg);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 40%;
+    }
+
+    span {
+      padding-right: 15px;
+    }
+  }
+`;
+
+const section1Styles = css`
+  background-color: ${lightGray};
+  width: 100%;
+  height: 80vh;
+  align-items: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    max-height: 80vh;
+    width: auto;
+  }
+
+  h1 {
+    color: ${darkGray};
+    position: absolute;
+    top: 30vh;
+  }
+
+  p {
+    color: ${darkGray};
+    position: absolute;
+    top: 60vh;
+  }
+
+  button {
+    position: absolute;
+    top: 70vh;
   }
 `;
 
@@ -150,7 +259,23 @@ function App() {
             <span>English</span>
           </button>
         </div>
+        <button id="newsletter-button">
+          <span>Newsletter</span>
+
+          <img src={envelope} alt="Envelope icon" />
+        </button>
       </header>
+      <section css={section1Styles}>
+        <div>
+          <h1>Bloom System</h1>
+          <img src={heroImage} alt="Bloom diagnostic tool" />
+          <p>
+            Our smart system combines laboratory technology with personalized
+            analysis.
+          </p>
+          <button>Buy now</button>
+        </div>
+      </section>
     </div>
   );
 }
